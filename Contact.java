@@ -116,8 +116,8 @@ public class Contact implements Comparable<Contact> {
         return notes;
     }
 
-    //public LinkedList<Event> getEvents() {
-       // return events;
-  //  }
+    public LinkedList<Event> getEvents() {
+        return events;
+   }
 
 }
