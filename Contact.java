@@ -6,7 +6,7 @@ public class Contact implements Comparable<Contact> {
     private String address;
     private String birthday;
     private String notes;
-    //private xxxx? events;
+    private LinkedList<Event> events;
 
     public Contact(String name, String phone, String email, String address, String birthday, String notes) {
         // constructor with parameters
@@ -16,7 +16,7 @@ public class Contact implements Comparable<Contact> {
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
-        //events = new LinkedList<Event>();
+        events = new LinkedList<Event>();
     }
 
     public Contact() { // default constructor
