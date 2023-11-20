@@ -62,7 +62,7 @@ public boolean insert(int k, T val) {
 
 
     public boolean remove_key (int tkey){
-        Boolean removed = new Boolean(false);
+        Boolean removed = false; /*new Boolean(false); */
         BSTNode<T> p;
         p = remove_aux(tkey, root, removed);
         current = root = p;
