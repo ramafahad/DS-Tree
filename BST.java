@@ -17,51 +17,94 @@ return current.data;
 
 
 
-public boolean findkey(int tkey) {
-    BSTNode<T> p = root,q = root;
-    if(empty())
-    return false;
-    while(p != null) {
-    q = p;
-    if(p.key == tkey) {
-    current = p;
-    return true;
+    public boolean findkey(String tkey) {
+        BSTNode<T> p = root;
+        while (p!= null) {
+            current=p;
+            if(tkey.compareToIgnoreCase(p.key)==0){
+                return true;
+            }
+            else if(tkey.compareToIgnoreCase(p.key)<0){
+            p=p.left;
+            }
+            else{
+
+                p=p.right;
+            }  
+        }
+
+        return false;
+    
     }
-    else if(tkey < p.key)
-    p = p.left;
-    else
-    p = p.right;
-    }
-    current = q;
-    return false;
-}
 
 
 
-public boolean insert(int k, T val) {
-    BSTNode<T> p, q = current;
-    if(findkey(k)) {
-    current = q; // findkey() modified current
-    return false; // key already in the BST
-    }
-    p = new BSTNode<T>(k, val);
-    if (empty()) {
-    root = current = p;
-    return true;
-    }
-    else {
-    // current is pointing to parent of the new key
-    if (k < current.key)
-    current.left = p;
-    else
-    current.right = p;
-    current = p;
-    return true;
-    }
+    public boolean insert(String  k, T val) {
+
+        if(root==null){
+        current=root=new BSTNode<T>(k, val);
+        return true;
+        }
+
+        BSTNode<T> p = current;
+
+        if(findkey(k)){
+            current=p;
+            return false;
+        }
+
+        BSTNode<T> tmp =new BSTNode<T>(k, val);
+
+        if(((Contact)val).compareTo(current.key)<0){
+
+            current.left=tmp;
+
+        }
+
+        else{
+            current.right=tmp;
+        }
+
+        current=tmp;
+        return true;
+  
     }
 
 
-    public boolean remove_key (int tkey){
+
+
+
+    
+    public boolean chickUnique( Contact tmp) {
+
+        BSTNode<T> p = root;
+        while (p!= null) {
+            if(tmp.compareToPhone(((Contact)p.data))==0){
+                return false;
+            }
+            else if(tmp.compareToPhone(((Contact)p.data))<0){
+            p=p.left;
+            }
+            else{
+
+                p=p.right;
+            }  
+        }
+
+        return true;
+    
+    }
+
+
+
+
+
+
+
+
+
+
+    public boolean remove_key (String tkey){
         Boolean removed = false; /*new Boolean(false); */
         BSTNode<T> p;
         p = remove_aux(tkey, root, removed);
@@ -71,12 +114,12 @@ public boolean insert(int k, T val) {
 
 
 
-    private BSTNode<T> remove_aux(int key, BSTNode<T> p,Boolean flag) {
+    private BSTNode<T> remove_aux(String key, BSTNode<T> p,Boolean flag) {
         BSTNode<T> q, child = null;
         if(p == null) return null;
-        if(key < p.key)
+        if(key.compareTo(p.key)<0 ) // Im not sure
         p.left = remove_aux(key, p.left, flag); //go left
-        else if(key > p.key)
+        else if(key.compareTo(p.key)>0) // Im not sure
         p.right = remove_aux(key, p.right, flag); //go right
         else { // key is found
         flag=true;
@@ -112,10 +155,10 @@ public boolean insert(int k, T val) {
 
 
 
-            public boolean update(int key, T data){
+            public boolean update(String key, T data){
                 remove_key(current.key);
                 return insert(key, data);
-                }
+            }
 
 
 

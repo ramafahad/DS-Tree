@@ -37,6 +37,24 @@ public class Contact implements Comparable<Contact> {
         return name.compareTo(b.name);
     }
 
+    public int compareTo(String b) {
+       
+        return name.compareTo(b);
+    }
+
+
+
+
+    public int compareToPhone(Contact b) {
+       
+            return (this.phone.compareTo(b.phone));
+    
+    }
+
+
+
+
+
     /* public boolean checkconflict(String DateTime) {
         // the method accept a string and check if there are to events at the same time
         // returns true if theres conflict, false otherwise
