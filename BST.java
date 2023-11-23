@@ -71,27 +71,24 @@ return current.data;
     }
 
 
+    public boolean chickUnique( Contact tmp){
 
+        return chickUnique(  tmp, root);
+    }
 
 
     
-    public boolean chickUnique( Contact tmp) {
+    private boolean chickUnique( Contact tmp, BSTNode<T> n) {
 
-        BSTNode<T> p = root;
-        while (p!= null) {
-            if(tmp.compareToPhone(((Contact)p.data))==0){
+        if(n== null)
+         return true;
+        
+        if(tmp.compareToPhone(((Contact)n.data))==0){
                 return false;
-            }
-            else if(tmp.compareToPhone(((Contact)p.data))<0){
-            p=p.left;
-            }
-            else{
+         }
 
-                p=p.right;
-            }  
-        }
 
-        return true;
+       return chickUnique(tmp, n.left) || chickUnique(tmp, n.right);
     
     }
 
