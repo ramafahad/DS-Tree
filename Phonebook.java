@@ -154,8 +154,37 @@ public class Phonebook {
             return true;
 
     }// end of checkUnique method
+
 */
 
+
+
+
+public static LinkedList<Contact> searchFor(int searchChoice, String choice){
+ switch (searchChoice) {
+                case 1:
+                    
+                    break;
+
+                case 2:
+                    
+                    break;
+
+                case 3:
+                    
+                    break;
+
+                case 4:
+                    
+                    break;
+
+                case 5:
+                   
+                    break;
+
+    }// end switch
+
+} //  end search for
 
 
     public static LinkedList<Contact> search(int searchChoice, String choice) {
