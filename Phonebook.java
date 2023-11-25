@@ -73,11 +73,14 @@ public class Phonebook {
                     }
                     input.nextLine();
                     String choice = input.nextLine();
-                    if (!search(searchChoice, choice).empty()) {
-                        System.out.println("Contact/s found!\n");
-                        search(searchChoice, choice).printList();
-                    } else
+
+
+                    if (!PBook.empty()) {
+                        searchFor(searchChoice,choice);
+                    } 
+                    else
                         System.out.println("Nothing found!\n");
+
                     break;
 
                 case 3:
@@ -160,27 +163,42 @@ public class Phonebook {
 
 
 
-public static LinkedList<Contact> searchFor(int searchChoice, String choice){
+public static void searchFor(int searchChoice, String choice){
  switch (searchChoice) {
                 case 1:
+                if (PBook.findkey(choice))
+                    {
+                        System.out.println("Contact found!");                      
+                        System.out.println(PBook.retrieve().toString());
+                        
+                    }
+                else
+                   System.out.println("Contact not found!");
+
                     
-                    break;
+                break;
 
                 case 2:
+                if ( PBook.SearchPhone(choice)) {
+                        System.out.println("Contact found!");
+                        System.out.println(PBook.retrieve().toString());
+                     }
+                 else    
+                    System.out.println("Contact not found!");
                     
-                    break;
+                break;
 
                 case 3:
-                    
-                    break;
+                PBook.SearchEmail(choice);
+                break;
 
                 case 4:
-                    
-                    break;
+                PBook.SearchAddress(choice);
+                break;
 
                 case 5:
-                   
-                    break;
+                PBook.SearchBirthday(choice);
+                break;
 
     }// end switch
 

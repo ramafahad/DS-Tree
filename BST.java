@@ -96,6 +96,81 @@ return current.data;
 
 
 
+    public boolean SearchPhone(String phone)
+    {
+        return SearchPhone_pri (root, phone);
+    }
+
+    private boolean SearchPhone_pri (BSTNode <T> p, String phone)
+    {
+        if (p == null)
+            return false;
+      if (((Contact)p.data).compareToPhone(phone) == 0){
+            current = p;  
+            return true;
+        }
+        
+        return (SearchPhone_pri(p.left , phone) || SearchPhone_pri(p.right, phone));
+    }
+
+
+
+
+
+    public void SearchEmail(String email)
+    {
+        SearchEmail_pri (root, email);
+    }
+    private void SearchEmail_pri (BSTNode <T> p, String email)
+    {
+        if (p == null)
+            return;
+        
+        if (((Contact)p.data).compareToEmail(email) == 0)
+            System.out.println(p.data);
+        
+        SearchEmail_pri(p.left , email);
+        SearchEmail_pri(p.right, email);
+    }
+
+
+
+
+    public void SearchAddress(String address)
+    {
+        SearchAddress_pri (root, address);
+    }
+    private void SearchAddress_pri(BSTNode <T> p, String address)
+    {
+        if (p == null)
+            return ;
+        if (((Contact)p.data).compareToAddress(address) == 0)
+            System.out.println(p.data);
+        
+        SearchAddress_pri(p.left , address);
+        SearchAddress_pri(p.right, address);
+    }
+
+
+    public void SearchBirthday(String birthday)
+    {
+        SearchBirthday_pri (root, birthday);
+    }
+    private void SearchBirthday_pri (BSTNode<T> p, String birthday)
+    {
+        if (p == null)
+            return ;
+        if (((Contact)p.data).compareToBirthday(birthday) == 0)
+            System.out.println(p.data);
+        
+        SearchBirthday_pri(p.left , birthday);
+        SearchBirthday_pri(p.right, birthday);
+    }
+
+
+
+
+
 
 
 

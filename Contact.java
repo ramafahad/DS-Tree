@@ -51,6 +51,45 @@ public class Contact implements Comparable<Contact> {
     
     }
 
+    public int compareToPhone(String phone) {
+       
+            return (this.phone.compareTo(phone));
+    
+    }
+
+
+
+    public int compareToEmail(String emailaddress) {
+    
+            return (this.email.compareToIgnoreCase(emailaddress));
+        
+    }
+
+
+
+
+    public int compareToAddress(String address) {
+        
+            return (this.address.compareToIgnoreCase(address));
+        
+    }
+
+
+
+
+
+    public int compareToBirthday(String birthday) {
+        
+            return (this.birthday.compareTo(birthday) ) ;
+        
+    }
+
+
+    
+
+
+
+
 
 
 
