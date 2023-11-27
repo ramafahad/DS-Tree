@@ -100,12 +100,11 @@ public class Phonebook {
                 case 6:
                     System.out.println("Enter the first name: ");
                     String firstName = input.next();
-                    LinkedList<Contact> contactsWithSameName = search(6, firstName);
-                    if (contactsWithSameName.empty())
-                        System.out.print("No contact with the entered first name!\n");
+                   
+                    if (PBook.empty())
+                        System.out.print("No contactS found\n");
                     else {
-                        System.out.println("Contacts found!");
-                        contactsWithSameName.printList();
+                        PBook.searchFirstName(firstName);
                     }
                     break;
 

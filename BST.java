@@ -168,6 +168,25 @@ return current.data;
     }
 
 
+    public void searchFirstName(String firstName){
+
+        searchFirstName_pri(root,firstName);
+    }
+
+
+
+     private void searchFirstName_pri(BSTNode<T> p, String firstName){
+        if (p == null)
+        return ;
+        if (((Contact)p.data).compareFirstName(firstName) == 0)
+        System.out.println(p.data);
+   
+        searchFirstName_pri(p.left , firstName);
+        searchFirstName_pri(p.right, firstName);
+
+
+    }
+
 
 
 

@@ -84,8 +84,15 @@ public class Contact implements Comparable<Contact> {
         
     }
 
+    public int compareFirstName(String firstName){
 
-    
+      
+        return (this.name.substring(0,this.name.indexOf(" ") ).compareTo(firstName) ) ;
+
+    }
+
+
+
 
 
 
