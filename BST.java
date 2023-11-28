@@ -80,7 +80,7 @@ return current.data;
     
     private boolean chickUnique( Contact tmp, BSTNode<T> n) {
 
-        if(n== null)
+        /*if(n== null)
          return false;
         
         if(tmp.compareToPhone(((Contact)n.data))==0){
@@ -89,7 +89,27 @@ return current.data;
 
 
        return chickUnique(tmp, n.left) || chickUnique(tmp, n.right);
-    
+    */
+
+
+
+         // in order traversal 
+
+         
+        if (n==null )
+            return false;
+
+        Boolean left = chickUnique (tmp , n.left);
+         Boolean comN = false;
+        if (tmp.compareToPhone(((Contact)n.data))==0)
+                 comN  = true;
+       
+
+        Boolean right =  chickUnique (tmp , n.right);
+        
+
+        return left || comN || right;
+
     }
 
 
