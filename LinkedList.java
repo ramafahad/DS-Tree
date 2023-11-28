@@ -107,12 +107,13 @@ public class LinkedList<T> {
 
     }/// end method
 
+
     public void printList() {
         /*
          * this method print all element in the list,
          * it has no parameter and does not return anything
          */
-        if (empty()) { // check if it's not empty
+        if (this.empty()) { // check if it's not empty
             System.out.println("there is nothing to  print ");
             return;
         }
@@ -123,6 +124,34 @@ public class LinkedList<T> {
         }
 
     }// end method
+
+  
+    
+    public void printList( LinkedList<T> list){
+        if( list.empty()){System.out.println("there is nothing to  print");
+    
+        return;
+    }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 
     // setter&getter
 
