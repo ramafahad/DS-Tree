@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class Phonebook {
 
     public static Scanner input = new Scanner(System.in); // to use it in the whole class if needed
-    public static BST<Contact> PBook = new BST<Contact>(); // a bst of all contacts
+    public static LinkedList<Contact> PBook = new LinkedList<Contact>(); // a bst of all contacts
+        public static BST<Contact> PBook2 = new BST<Contact>(); // a bst of all contacts
+
     public static LinkedList<Event> AllEvent = new LinkedList<Event>(); // a list of all events
 
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class Phonebook {
         int num;
         do {
 
-            System.out.println("Please choose an option from the following ");
+            System.out.println("\n \n \n 1Please choose an option from the following ");
             System.out.println(
                     " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Print contacts that share an event\n 9.Exit");
             num = input.nextInt();
@@ -35,12 +37,12 @@ public class Phonebook {
                     String note = input.nextLine();
                     Contact newContact = new Contact(name, phone, email, address, bday, note);
 
-                    if (PBook.chickUnique(newContact)) {
+                    if (!PBook2.chickUnique(newContact)) {
 
-                        if(PBook.insert(name, newContact))
+                        if(PBook2.insert(name, newContact))
                         System.out.println("Contact added successfully!");
                         else
-                         System.out.println("This phone number already exists!");
+                         System.out.println("This name exists!");
                         
                     } else
                         System.out.println("This contact already exists!");
@@ -75,7 +77,7 @@ public class Phonebook {
                     String choice = input.nextLine();
 
 
-                    if (!PBook.empty()) {
+                    if (!PBook2.empty()) {
                         searchFor(searchChoice,choice);
                     } 
                     else
@@ -101,10 +103,10 @@ public class Phonebook {
                     System.out.println("Enter the first name: ");
                     String firstName = input.next();
                    
-                    if (PBook.empty())
+                    if (PBook2.empty())
                         System.out.print("No contactS found\n");
                     else {
-                        PBook.searchFirstName(firstName);
+                        PBook2.searchFirstName(firstName);
                     }
                     break;
 
@@ -165,10 +167,10 @@ public class Phonebook {
 public static void searchFor(int searchChoice, String choice){
  switch (searchChoice) {
                 case 1:
-                if (PBook.findkey(choice))
+                if (PBook2.findkey(choice))
                     {
                         System.out.println("Contact found!");                      
-                        System.out.println(PBook.retrieve().toString());
+                        System.out.println(PBook2.retrieve().toString());
                         
                     }
                 else
@@ -178,9 +180,9 @@ public static void searchFor(int searchChoice, String choice){
                 break;
 
                 case 2:
-                if ( PBook.SearchPhone(choice)) {
+                if ( PBook2.SearchPhone(choice)) {
                         System.out.println("Contact found!");
-                        System.out.println(PBook.retrieve().toString());
+                        System.out.println(PBook2.retrieve().toString());
                      }
                  else    
                     System.out.println("Contact not found!");
@@ -188,15 +190,15 @@ public static void searchFor(int searchChoice, String choice){
                 break;
 
                 case 3:
-                PBook.SearchEmail(choice);
+                PBook2.SearchEmail(choice);
                 break;
 
                 case 4:
-                PBook.SearchAddress(choice);
+                PBook2.SearchAddress(choice);
                 break;
 
                 case 5:
-                PBook.SearchBirthday(choice);
+                PBook2.SearchBirthday(choice);
                 break;
 
     }// end switch

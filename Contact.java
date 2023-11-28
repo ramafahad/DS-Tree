@@ -101,7 +101,7 @@ public class Contact implements Comparable<Contact> {
 
 
 
-    /* public boolean checkconflict(String DateTime) {
+     public boolean checkconflict(String DateTime) {
         // the method accept a string and check if there are to events at the same time
         // returns true if theres conflict, false otherwise
        
@@ -118,7 +118,7 @@ public class Contact implements Comparable<Contact> {
             return true;
         return false; 
 
-    }// end checkconflict*/
+    }// end checkconflict
 
     @Override
     public String toString() {
@@ -152,9 +152,9 @@ public class Contact implements Comparable<Contact> {
         this.notes = notes;
     }
 
-    /*public void setEvents(Event event) {
+    public void setEvents(Event event) {
         this.events.insert(event);
-    } */
+    } 
 
     public String getName() {
         return name;

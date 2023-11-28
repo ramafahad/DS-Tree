@@ -81,10 +81,10 @@ return current.data;
     private boolean chickUnique( Contact tmp, BSTNode<T> n) {
 
         if(n== null)
-         return true;
+         return false;
         
         if(tmp.compareToPhone(((Contact)n.data))==0){
-                return false;
+                return true;
          }
 
 
