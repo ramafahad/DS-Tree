@@ -29,6 +29,11 @@ public class Contact implements Comparable<Contact> {
         //events = new LinkedList<Event>();
     }
 
+
+
+     // the methods compare between two objects And return an integer indicate if
+        // there are equal
+        // or the first object is bigger than the other ,or smaller
     @Override
     public int compareTo(Contact b) {
         // the method compare between two objects And return an integer indicate if

@@ -165,6 +165,9 @@ public class Phonebook {
 
 
 public static void searchFor(int searchChoice, String choice){
+
+    // this method accept the searchChoice and the data that we are looking for, 
+    //and call the apprioprate method for searching 
  switch (searchChoice) {
                 case 1:
                 if (PBook2.findkey(choice))
