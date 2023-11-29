@@ -172,128 +172,6 @@ public class Phonebook {
      * 
      */
 
-        if (PBook.empty())
-            return true;
-        PBook.findFirst();
-        while (!PBook.last()) {
-            if (PBook.retrieve().getName().equalsIgnoreCase(c.getName())
-                    || PBook.retrieve().getPhone().equalsIgnoreCase(c.getPhone())) {
-                return false;
-            }
-            PBook.findNext();
-        } // end while
-
-        if (PBook.retrieve().getName().equalsIgnoreCase(c.getName()) 
-                || PBook.retrieve().getPhone().equalsIgnoreCase(c.getPhone())) //check last element
-            return false;
-
-        else
-            return true;
-
-    }// end of checkUnique method
-
-*/
-
-
-
-
-public static void searchFor(int searchChoice, String choice){
-
-    // this method accept the searchChoice and the data that we are looking for, 
-    //and call the apprioprate method for searching 
- switch (searchChoice) {
-                case 1:
-                if (PBook2.findkey(choice))
-                    {
-                        System.out.println("Contact found!");                      
-                        System.out.println(PBook2.retrieve().toString());
-                        
-                    }
-                else
-                   System.out.println("Contact not found!");
-
-                    
-                break;
-
-                case 2:
-                if ( PBook2.SearchPhone(choice)) {
-                        System.out.println("Contact found!");
-                        System.out.println(PBook2.retrieve().toString());
-                     }
-                 else    
-                    System.out.println("Contact not found!");
-                    
-                break;
-
-                case 3:
-                PBook2.SearchEmail(choice);
-                break;
-
-                case 4:
-                PBook2.SearchAddress(choice);
-                break;
-
-                case 5:
-                PBook2.SearchBirthday(choice);
-                break;
-
-    }// end switch
-
-} //  end search for
-
-
-    public static LinkedList<Contact> search(int searchChoice, String choice) {
-        /*
-        / * This method searches for a list of contacts based on the inputs the user
-         * entered.
-         * It searches either by full name, phone number ,email, address, birthday, or
-         * first name
-         * and returns a linked list with all the contacts that match the search
-         */
-
-        LinkedList<Contact> returnedlist = new LinkedList<Contact>();
-        if (PBook.empty())
-            return returnedlist;
-
-        PBook.findFirst();
-        while (!PBook.last()) {
-            switch (searchChoice) {
-                case 1:
-                    if (PBook.retrieve().getName().equalsIgnoreCase(choice))
-                        returnedlist.insert(PBook.retrieve());
-                    break;
-
-                case 2:
-                    if (PBook.retrieve().getPhone().equals(choice))
-                        returnedlist.insert(PBook.retrieve());
-                    break;
-
-                case 3:
-                    if (PBook.retrieve().getEmail().equalsIgnoreCase(choice))
-                        returnedlist.insert(PBook.retrieve());
-                    break;
-
-                case 4:
-                    if (PBook.retrieve().getAddress().equalsIgnoreCase(choice))
-                        returnedlist.insert(PBook.retrieve());
-                    break;
-
-                case 5:
-                    if (PBook.retrieve().getBirthday().equals(choice))
-                        returnedlist.insert(PBook.retrieve());
-                    break;
-
-                case 6:
-                    if (PBook.retrieve().getName().substring(0, PBook.retrieve().getName().indexOf(" "))
-                            .equalsIgnoreCase(choice))
-                        returnedlist.insert(PBook.retrieve());
-                    break;
-
-            }// end switch
-            PBook.findNext();
-        } // end while
-
-        switch (searchChoice) {  // check last element
     /******************************************************************** */
     public static void searchFor(int searchChoice, String choice) {
         switch (searchChoice) {
@@ -653,8 +531,7 @@ public static void searchFor(int searchChoice, String choice){
      * 
      */
     /********************************************************* */
-
-    public static void printEventDetails() {
+     public static void printEventDetails() {
         /*
          * print event details based on criteria, either by contact name or event title
          * shows a message if the contact doesnt exist or if it doesnt have any events
@@ -671,16 +548,11 @@ public static void searchFor(int searchChoice, String choice){
                 String contactName = input.nextLine();
                 if (PBook2.findkey(contactName)) {
                     returnedEvent = PBook2.retrieve().getEvents();
-                    System.out.println("contact found");
+                     System.out.println("contact found");
                     if (returnedEvent.empty())
                         System.out.println("There are no events for " + contactName);
                     else {
                         System.out.println("Events for " + contactName);
-                           while(){
-
-
-
-                           }
                     }
                 } else
                     System.out.print("Contact entered doesn't exist!\n");
@@ -717,33 +589,6 @@ public static void searchFor(int searchChoice, String choice){
 
         }
     }// end method
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /******************************************************************* */
 

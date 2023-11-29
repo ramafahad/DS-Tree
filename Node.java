@@ -14,7 +14,7 @@ public class Node<T> {
         next = null;
     }
 
-    //setter&getter
+    // setter&getter
     public T getData() {
         return data;
     }

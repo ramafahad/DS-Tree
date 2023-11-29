@@ -18,7 +18,6 @@ return current.data;
 
 
     public boolean findkey(String tkey) {
-        // this method search for the key and return true if found, false otherwise
         BSTNode<T> p = root;
         while (p!= null) {
             current=p;
@@ -41,7 +40,6 @@ return current.data;
 
 
     public boolean insert(String  k, T val) {
-        // this nethod insert in the tree and return true if done , false otherwise
 
         if(root==null){
         current=root=new BSTNode<T>(k, val);
@@ -95,11 +93,9 @@ return current.data;
 
 
 
-         // this method check if the phone already exists, return true  if does, false if it is unique
-
          // in order traversal 
 
-
+         
         if (n==null )
             return false;
 
@@ -121,15 +117,12 @@ return current.data;
 
 
     public boolean SearchPhone(String phone)
-
     {
         return SearchPhone_pri (root, phone);
     }
 
     private boolean SearchPhone_pri (BSTNode <T> p, String phone)
     {
-
-        // this method search for the phone and print the contact info if it match the phone num
         if (p == null)
             return false;
       if (((Contact)p.data).compareToPhone(phone) == 0){
@@ -149,11 +142,7 @@ return current.data;
         SearchEmail_pri (root, email);
     }
     private void SearchEmail_pri (BSTNode <T> p, String email)
-
-             // the method search for email , if match then print the data
-
     {
-        
         if (p == null)
             return;
         
@@ -173,9 +162,6 @@ return current.data;
     }
     private void SearchAddress_pri(BSTNode <T> p, String address)
     {
-
-         // the method search for address , if match then print the data
-
         if (p == null)
             return ;
         if (((Contact)p.data).compareToAddress(address) == 0)
@@ -191,9 +177,6 @@ return current.data;
         SearchBirthday_pri (root, birthday);
     }
     private void SearchBirthday_pri (BSTNode<T> p, String birthday)
-
-            // the method search for birthday , if match then print the data
-
     {
         if (p == null)
             return ;
@@ -213,8 +196,6 @@ return current.data;
 
 
      private void searchFirstName_pri(BSTNode<T> p, String firstName){
-
-        // the method search for first name , if match then print the data
         if (p == null)
         return ;
         if (((Contact)p.data).compareFirstName(firstName) == 0)

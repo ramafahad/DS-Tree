@@ -6,7 +6,7 @@ public class Event implements Comparable<Event> {
    // private Contact contactInvolved;
     /******************************** */
     private boolean appointment;
-    private LinkedList <Contact> EventContacts=new LinkedList<Contact>();
+    private LinkedList <Contact> EventContacts;
 
     /******************************** */
 
@@ -18,7 +18,7 @@ public class Event implements Comparable<Event> {
         this.location = location;
        // this.contactInvolved = contactInvolved;
         this.appointment=appointment;
-        
+         EventContacts= new LinkedList<Contact>();
     }// end method
 
     @Override
@@ -59,7 +59,6 @@ public class Event implements Comparable<Event> {
 /******************************************** */
    public String listContactName(){
     String names="";
-
     EventContacts.findFirst();
     while(EventContacts!=null){
        names=names+EventContacts.retrieve().getName()+" ,";
@@ -70,27 +69,19 @@ public class Event implements Comparable<Event> {
 
    }
 
-/************************** */
 
-
-
-
-
-
-   
+    /********************************* */
     public String toString() {
 
         String names= listContactName();
-        String text="";
         if(appointment==true)
-        text=" title: " + title + "\n Contact name: " + printList()
+        return " title: " + title + "\n Contact name: " +names
                 + "\n Event date and time(MM/DD/YYYYHH:MM):" + dateTime + "\n Event location:" + location+"\n";
 
          else
-            text= " title: " + title + "\n Contact name: " +names
+          return " title: " + title + "\n Contact name: " +names
                 + "\n appointment date and time(MM/DD/YYYYHH:MM):" + dateTime + "\n appointment location:" + location+"\n";
 
-                return text;
 
     }// end method
 

@@ -119,30 +119,14 @@ public class LinkedList<T> {
         }
         current = head;
         while (current != null) { // loop on all element
-            System.out.println(current.data.toString()); // print element's data
+            System.out.println(current.data); // print element's data
             current = current.next;
         }
 
     }// end method
 
   
-    
-    public void printList( LinkedList<T> list){
-        if( list.empty()){System.out.println("there is nothing to  print");
-    
-        return;
-    }
-
-
-
-
-
-
-
-
-
-
-    }
+   
 
 
 
