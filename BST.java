@@ -211,24 +211,12 @@ public class BST<T> {
             return null;
         while (p.left != null) {
             p = p.left;
-<<<<<<< Updated upstream
-        }
-        return p;
-    }
-=======
             }
             return p;
             }
 
 
 
-
-
-
-            public boolean update(String key, T data){
-                remove_key(current.key);
-                return insert(key, data);
-            }
 
 
 
@@ -263,7 +251,6 @@ public class BST<T> {
 
 
 
->>>>>>> Stashed changes
 
     public boolean update(String key, T data) {
         remove_key(current.key);
