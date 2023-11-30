@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Phonebook {
 
     public static Scanner input = new Scanner(System.in); // to use it in the whole class if needed
-    public static LinkedList<Contact> PBook = new LinkedList<Contact>(); // a bst of all contacts
+    public static LinkedList<Contact> PBook = new LinkedList<Contact>(); // a linkedlist of all contacts
     public static BST<Contact> PBook2 = new BST<Contact>(); // a bst of all contacts
     public static LinkedList<Event> AllEvent = new LinkedList<Event>(); // a list of all events
 
@@ -21,6 +21,9 @@ public class Phonebook {
             input.nextLine();
 
             switch (num) {
+                case 0:
+                    System.out.println(PBook2.toString());
+                break;
                 case 1:
                     System.out.println("Enter the contact's name:");
                     String name = input.nextLine();

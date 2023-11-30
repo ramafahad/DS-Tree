@@ -211,9 +211,59 @@ public class BST<T> {
             return null;
         while (p.left != null) {
             p = p.left;
+<<<<<<< Updated upstream
         }
         return p;
     }
+=======
+            }
+            return p;
+            }
+
+
+
+
+
+
+            public boolean update(String key, T data){
+                remove_key(current.key);
+                return insert(key, data);
+            }
+
+
+
+
+
+    public String toString() 
+    {
+        String str = "";
+        if ( root == null)
+            return str;
+        str = recin_order_Traversal ( root , str );
+        return str;
+    }
+    
+    private String recin_order_Traversal (BSTNode < T> p ,String str)
+    {
+        if (p == null)
+            return "";
+        else
+        {
+            str = recin_order_Traversal(p.left , str);
+            str += p.data.toString() + "    ";
+            str += recin_order_Traversal(p.right, str);
+        }
+        return str;
+    }
+
+
+
+                
+
+
+
+
+>>>>>>> Stashed changes
 
     public boolean update(String key, T data) {
         remove_key(current.key);
