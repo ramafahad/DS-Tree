@@ -128,6 +128,7 @@ public class Contact implements Comparable<Contact> {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
     public void setEvents(Event event) {
         this.events.insert(event);
     }
@@ -135,6 +136,7 @@ public class Contact implements Comparable<Contact> {
     public String getName() {
         return name;
     }
+
     public String getPhone() {
         return phone;
     }

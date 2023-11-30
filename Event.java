@@ -1,3 +1,4 @@
+
 public class Event implements Comparable<Event> {
     // private String type; ?could be boolean?
     private String title;
@@ -56,6 +57,7 @@ public class Event implements Comparable<Event> {
     public boolean Getappointment() {
         return appointment;
     }
+
     /******************************************** */
     public String listContactName() {
         String names = "";
@@ -63,25 +65,28 @@ public class Event implements Comparable<Event> {
         while (!EventContacts.last()) {
             names = names + EventContacts.retrieve().getName() + " ,";
             EventContacts.findNext();
-        }
-        if (EventContacts.retrieve() != null)
-            names = names + EventContacts.retrieve().getName();
 
+        }
+        names = names + EventContacts.retrieve().getName();
         return names;
 
     }
+
     /********************************* */
     public String toString() {
         String names = listContactName();
 
         if (appointment == false)
-            return " title: " + title + "\n Event date and time(MM/DD/YYYYHH:MM):" + dateTime + "\n Event location:"
-                    + location + "\n" + "\n Contact name: " + names;
+            return "\n\n title: " + title + "\n Event date and time(MM/DD/YYYYHH:MM):" + dateTime + "\n Event location:"
+                    + location + "\n Contact name: " + names;
 
         else
-            return " title: " + title + "\n appointment date and time(MM/DD/YYYYHH:MM):"
-                    + dateTime + "\n appointment location:" + location + "\n" + "\n Contact name: " + names;
+            return "\n\n title: " + title + "\n appointment date and time(MM/DD/YYYYHH:MM):"
+                    + dateTime + "\n appointment location:" + location + "\n Contact name: " + names;
+
     }// end method
+
+    /******************************************** */
 
     // setter&getter
     public String gettitle() {

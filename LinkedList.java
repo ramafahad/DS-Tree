@@ -125,20 +125,21 @@ public class LinkedList<T> {
      * 
      * }// end method
      */
+
     /****************************************************** */
     public String printList() {
         String all = "";
         current = head;
-        while (current != null) { // loop on all element
+        while (current != null) {
             all = all + current.data.toString() + " \n";
-            // print element's data
             current = current.next;
         }
         return all;
     }// end method
 
     /**************************************************************** */
-    // setter&getter
+
+    // setter&gette
 
     public boolean full() {
         return false;
