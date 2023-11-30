@@ -71,7 +71,6 @@ public class Event implements Comparable<Event> {
         return names;
 
     }
-
     /********************************* */
     public String toString() {
         String names = listContactName();

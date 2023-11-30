@@ -139,7 +139,6 @@ public class LinkedList<T> {
     }// end method
 
     /**************************************************************** */
-
     // setter&getter
 
     public boolean full() {

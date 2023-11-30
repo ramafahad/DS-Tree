@@ -136,7 +136,6 @@ public class Contact implements Comparable<Contact> {
     public String getName() {
         return name;
     }
-
     public String getPhone() {
         return phone;
     }

@@ -9,7 +9,6 @@ public class BSTNode<T> {
         data = val;
         left = right = null;
     }
-
     public BSTNode(String k, T val, BSTNode<T> l, BSTNode<T> r) {
         key = k;
         data = val;
