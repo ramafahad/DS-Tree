@@ -1,5 +1,4 @@
 
-
 public class Contact implements Comparable<Contact> {
     private String name;
     private String phone;
@@ -27,7 +26,7 @@ public class Contact implements Comparable<Contact> {
         address = null;
         birthday = null;
         notes = null;
-        //events = new LinkedList<Event>();
+        // events = new LinkedList<Event>();
     }
 
     @Override
@@ -39,73 +38,50 @@ public class Contact implements Comparable<Contact> {
     }
 
     public int compareTo(String b) {
-       
+
         return name.compareTo(b);
     }
 
-
-
-
     public int compareToPhone(Contact b) {
-       
-            return (this.phone.compareTo(b.phone));
-    
+
+        return (this.phone.compareTo(b.phone));
+
     }
 
     public int compareToPhone(String phone) {
-       
-            return (this.phone.compareTo(phone));
-    
+
+        return (this.phone.compareTo(phone));
+
     }
-
-
 
     public int compareToEmail(String emailaddress) {
-    
-            return (this.email.compareToIgnoreCase(emailaddress));
-        
+
+        return (this.email.compareToIgnoreCase(emailaddress));
+
     }
-
-
-
 
     public int compareToAddress(String address) {
-        
-            return (this.address.compareToIgnoreCase(address));
-        
+
+        return (this.address.compareToIgnoreCase(address));
+
     }
-
-
-
-
 
     public int compareToBirthday(String birthday) {
-        
-            return (this.birthday.compareTo(birthday) ) ;
-        
-    }
 
-    public int compareFirstName(String firstName){
-
-      
-        return (this.name.substring(0,this.name.indexOf(" ") ).compareTo(firstName) ) ;
+        return (this.birthday.compareTo(birthday));
 
     }
 
+    public int compareFirstName(String firstName) {
 
+        return (this.name.substring(0, this.name.indexOf(" ")).compareTo(firstName));
 
+    }
 
-
-
-
-
-
-
-
-     public boolean checkconflict(String DateTime) {
+    public boolean checkconflict(String DateTime) {
         // the method accept a string and check if there are to events at the same time
         // returns true if theres conflict, false otherwise
-       
+
         if (events.empty()) // check if list is empty
             return false;
 
@@ -117,7 +93,7 @@ public class Contact implements Comparable<Contact> {
         } // end while
         if (events.retrieve().getDateTime().equals(DateTime))
             return true;
-        return false; 
+        return false;
 
     }// end checkconflict
 
@@ -155,7 +131,7 @@ public class Contact implements Comparable<Contact> {
 
     public void setEvents(Event event) {
         this.events.insert(event);
-    } 
+    }
 
     public String getName() {
         return name;
@@ -183,6 +159,6 @@ public class Contact implements Comparable<Contact> {
 
     public LinkedList<Event> getEvents() {
         return events;
-   }
+    }
 
 }
