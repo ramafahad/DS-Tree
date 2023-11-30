@@ -1,5 +1,4 @@
 public class Event implements Comparable<Event> {
-    // private String type; ?could be boolean?
     private String title;
     private String dateTime;
     private String location;

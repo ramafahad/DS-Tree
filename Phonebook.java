@@ -14,9 +14,9 @@ public class Phonebook {
         int num;
         do {
 
-            System.out.println("\n \n \n 1Please choose an option from the following ");
+            System.out.println("\n \n \n Please choose an option from the following ");
             System.out.println(
-                    " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Print contacts that share an event\n 9.Exit");
+                    " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Exit");
             num = input.nextInt();
             input.nextLine();
 
@@ -84,12 +84,11 @@ public class Phonebook {
                     break;
 
                 case 3:
-                    /*
-                     * System.out.println("Enter the name of the contact you want to delete");
-                     * String deletedContact = input.nextLine();
-                     * deleteContact(deletedContact);
-                     * break;
-                     */
+                    
+                    System.out.println("Enter the name of the contact you want to delete");
+                    String deletedContact = input.nextLine();
+                    deleteContact(deletedContact);
+                    break;
 
                 case 4:
                     scheduleEvent();
@@ -129,7 +128,7 @@ public class Phonebook {
                  * printSharedEvent();
                  * break;
                  */
-                case 9:
+                case 8:
                     System.out.println("Thank you for using the phonebook, goodbye!");
                     break;
 
@@ -139,7 +138,7 @@ public class Phonebook {
 
             }
 
-        } while (num != 9);
+        } while (num != 8);
 
     }// end main
 
@@ -357,6 +356,46 @@ public class Phonebook {
 
         }
     }// end method
+
+
+    public static void deleteContact(String name){
+        if (PBook2.findkey(name)) { //check contact exists
+            if (!AllEvent.empty()) { //check there are events
+                        AllEvent.findFirst();
+                        while(!AllEvent.last()) { 
+
+                            if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
+                                LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                                if (TempList.retrieve().getName().equalsIgnoreCase(name))
+                                    AllEvent.remove();
+                            }
+                            else{ //its an event
+                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                            TempList.removeSpecificObject(PBook2.retrieve());
+                            }
+                        }
+
+                        //last node
+                       if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
+                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                            if (TempList.retrieve().getName().equalsIgnoreCase(name))
+                                AllEvent.remove();
+                        }
+
+                        else { //its an event
+                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                            TempList.removeSpecificObject(PBook2.retrieve());
+                        }
+                        }
+                        
+                        PBook2.remove_key(name);
+                        System.out.println("Contact deleted successfully");
+                    }
+        else
+            System.out.println("Contact doesn't exist!");
+
+        }
+
 
     /******************************************************************* */
 
