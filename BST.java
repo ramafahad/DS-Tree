@@ -205,7 +205,6 @@ public class BST<T> {
         }
         return p;
     }
-
     private BSTNode<T> find_min(BSTNode<T> p) {
         if (p == null)
             return null;

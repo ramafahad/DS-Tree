@@ -125,7 +125,6 @@ public class LinkedList<T> {
      * 
      * }// end method
      */
-
     /****************************************************** */
     public String printList() {
         String all = "";

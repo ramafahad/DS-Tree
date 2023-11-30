@@ -56,7 +56,6 @@ public class Event implements Comparable<Event> {
     public boolean Getappointment() {
         return appointment;
     }
-
     /******************************************** */
     public String listContactName() {
         String names = "";
