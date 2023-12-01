@@ -85,12 +85,12 @@ public class Phonebook {
                     break;
 
                 case 3:
-                    /*
-                     * System.out.println("Enter the name of the contact you want to delete");
-                     * String deletedContact = input.nextLine();
-                     * deleteContact(deletedContact);
-                     * break;
-                     */
+
+                    System.out.println("Enter the name of the contact you want to delete");
+                    String deletedContact = input.nextLine();
+                    deleteContact(deletedContact);
+                    break;
+
 
                 case 4:
                     scheduleEvent();
@@ -585,6 +585,44 @@ public class Phonebook {
 
     /******************************************************************* */
 
+    public static void deleteContact(String name){
+        if (PBook2.findkey(name)) { //check contact exists
+            if (!AllEvent.empty()) { //check there are events
+                        AllEvent.findFirst();
+                        while(!AllEvent.last()) { 
+
+                            if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
+                                LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                                if (TempList.retrieve().getName().equalsIgnoreCase(name))
+                                    AllEvent.remove();
+                            }
+                            else{ //its an event
+                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                            TempList.removeSpecificObject(PBook2.retrieve());
+                            }
+                        }
+
+                        //last node
+                       if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
+                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                            if (TempList.retrieve().getName().equalsIgnoreCase(name))
+                                AllEvent.remove();
+                        }
+
+                        else { //its an event
+                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                            TempList.removeSpecificObject(PBook2.retrieve());
+                        }
+                        }
+                        
+                        PBook2.remove_key(name);
+                        System.out.println("Contact deleted successfully");
+                    }
+        else
+            System.out.println("Contact doesn't exist!");
+
+        }
+        
     /*
      * public static void deleteContact(String name) {
      * 
