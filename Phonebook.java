@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Phonebook {
 
     public static Scanner input = new Scanner(System.in); // to use it in the whole class if needed
-    public static LinkedList<Contact> PBook = new LinkedList<Contact>(); // a bst of all contacts
     public static BST<Contact> PBook2 = new BST<Contact>(); // a bst of all contacts
 
     public static LinkedList<Event> AllEvent = new LinkedList<Event>(); // a list of all events
@@ -40,7 +39,6 @@ public class Phonebook {
                     if (!PBook2.chickUnique(newContact)) {
                         if (PBook2.insert(name, newContact)) {
                             System.out.println("Contact added successfully!");
-                            PBook.add(newContact);
                         } else
                             System.out.println("This name exists!");
 
@@ -89,7 +87,6 @@ public class Phonebook {
                     deleteContact(deletedContact);
                     break;
 
-
                 case 4:
                     scheduleEvent();
                     break;
@@ -110,7 +107,7 @@ public class Phonebook {
                     break;
 
                 case 7:
-                     printEventinOrder();
+                    printEventinOrder();
                     break;
 
                 case 8:
@@ -165,8 +162,7 @@ public class Phonebook {
         }// end switch
 
     } // end search for
-    
-   
+
     public static void scheduleEvent() {
         /*
          * schedule an event for a contact, it checks if the contact exists
@@ -267,7 +263,6 @@ public class Phonebook {
 
     } // end schedule event
 
-    
     public static void printEventDetails() {
         /*
          * print event details based on criteria, either by contact name or event title
@@ -332,72 +327,63 @@ public class Phonebook {
         }
     }// end method
 
+    public static void deleteContact(String name) {
+        if (PBook2.findkey(name)) { // check contact exists
+            if (!AllEvent.empty()) { // check there are events
+                AllEvent.findFirst();
+                while (!AllEvent.last()) {
 
-    public static void deleteContact(String name){
-        if (PBook2.findkey(name)) { //check contact exists
-            if (!AllEvent.empty()) { //check there are events
-                        AllEvent.findFirst();
-                        while(!AllEvent.last()) { 
+                    if (AllEvent.retrieve().Getappointment()) { // if appointment, delete
+                        LinkedList<Contact> TempList = AllEvent.retrieve().getEventContacts();
+                        if (TempList.retrieve().getName().equalsIgnoreCase(name))
+                            AllEvent.removeSpecificObject(AllEvent.retrieve());
+                    } else { // its an event
 
-                            if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
-                                LinkedList<Contact> TempList =AllEvent.retrieve().getEventContacts();
-                                if (TempList.retrieve().getName().equalsIgnoreCase(name))
-                                    AllEvent.removeSpecificObject(AllEvent.retrieve());
-                            }
-                            else{ //its an event
+                        AllEvent.retrieve().getEventContacts().removeSpecificObject(PBook2.retrieve());
 
-                            AllEvent.retrieve().getEventContacts().removeSpecificObject(PBook2.retrieve());
-
-                            if(AllEvent.retrieve().getEventContacts().empty()) //if all contact deleted in event, delete event
-                                AllEvent.removeSpecificObject(AllEvent.retrieve());
-                            }
-
-                            AllEvent.findNext();
-                        }
-
-                        //last node1
-                       if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
-
-                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
-                            if (TempList.retrieve().getName().equalsIgnoreCase(name))
-                                AllEvent.removeSpecificObject(AllEvent.retrieve());
-                        }
-
-                        else{ //its an event
-
-                            AllEvent.retrieve().getEventContacts().removeSpecificObject(PBook2.retrieve());
-
-                            if(AllEvent.retrieve().getEventContacts().empty()) //if all contact deleted in event, delete event
-                                AllEvent.removeSpecificObject(AllEvent.retrieve());
-                        }
-                        }
-                        PBook2.remove_key(name);
-                        System.out.println("Contact and all related events/appointments deleted successfully");
+                        if (AllEvent.retrieve().getEventContacts().empty()) // if all contact deleted in event, delete
+                                                                            // event
+                            AllEvent.removeSpecificObject(AllEvent.retrieve());
                     }
-        else
+
+                    AllEvent.findNext();
+                }
+
+                // last node1
+                if (AllEvent.retrieve().Getappointment()) { // if appointment, delete
+
+                    LinkedList<Contact> TempList = AllEvent.retrieve().getEventContacts();
+                    if (TempList.retrieve().getName().equalsIgnoreCase(name))
+                        AllEvent.removeSpecificObject(AllEvent.retrieve());
+                }
+
+                else { // its an event
+
+                    AllEvent.retrieve().getEventContacts().removeSpecificObject(PBook2.retrieve());
+
+                    if (AllEvent.retrieve().getEventContacts().empty()) // if all contact deleted in event, delete event
+                        AllEvent.removeSpecificObject(AllEvent.retrieve());
+                }
+            }
+            PBook2.remove_key(name);
+            System.out.println("Contact and all related events/appointments deleted successfully");
+        } else
             System.out.println("Contact doesn't exist!");
 
+    }
+
+    public static void printEventinOrder() {
+        // this method will print event alphabetically
+        if (AllEvent.empty()) {
+            System.out.println("there are no events to print");
+        } else {
+            AllEvent.findFirst();
+            while (!AllEvent.last()) {
+                System.out.print(AllEvent.retrieve().toString()); // print all events alphabetically
+                AllEvent.findNext();
+            }
+            System.out.println(AllEvent.retrieve().toString());
         }
-
-        public static void printEventinOrder(){
-            //this method will print event alphabetically
-             if (AllEvent.empty()) {
-                        System.out.println("there are no events to print");
-                    } else {
-                        AllEvent.findFirst();
-                        while (!AllEvent.last()) {
-                            System.out.print(AllEvent.retrieve().toString()); // print all events alphabetically
-                            AllEvent.findNext();
-                        }
-                        System.out.println(AllEvent.retrieve().toString());
-                    }
-        }//end method
-
-
-
-
-
-
-
+    }// end method
 
 }// end phone book
