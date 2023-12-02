@@ -94,17 +94,22 @@ public class LinkedList<T> {
         if (head.data == obj)// check the condition
             head = head.next;
 
+        else{
         Node<T> privous = head;
         Node<T> temp = head.next;
 
         while (temp != null) {
             if (temp.data == obj) {
+                if (temp.next==null)
+                privous.next=null;
+                else
                 privous.next = temp.next;
             } // end if
-            privous = privous.next;
             temp = temp.next;
+            privous = privous.next;
+            
         } // end while
-
+        }
     }/// end method
 
     /*

@@ -592,36 +592,39 @@ public class Phonebook {
                         while(!AllEvent.last()) { 
 
                             if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
-                                LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
+                                LinkedList<Contact> TempList =AllEvent.retrieve().getEventContacts();
                                 if (TempList.retrieve().getName().equalsIgnoreCase(name))
-                                    AllEvent.remove();
+                                    AllEvent.removeSpecificObject(AllEvent.retrieve());
                             }
                             else{ //its an event
-                    
 
-                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
-                            TempList.removeSpecificObject(PBook2.retrieve());
+                            AllEvent.retrieve().getEventContacts().removeSpecificObject(PBook2.retrieve());
+
+                            if(AllEvent.retrieve().getEventContacts().empty()) //if all contact deleted in event, delete event
+                                AllEvent.removeSpecificObject(AllEvent.retrieve());
                             }
 
                             AllEvent.findNext();
                         }
 
-                        //last node
+                        //last node1
                        if(AllEvent.retrieve().Getappointment()){ //if appointment, delete
 
                             LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
                             if (TempList.retrieve().getName().equalsIgnoreCase(name))
-                                AllEvent.remove();
+                                AllEvent.removeSpecificObject(AllEvent.retrieve());
                         }
 
-                        else { //its an event
+                        else{ //its an event
 
-                            LinkedList<Contact> TempList =AllEvent.retrieve(). getEventContacts();
-                            TempList.removeSpecificObject(PBook2.retrieve());
+                            AllEvent.retrieve().getEventContacts().removeSpecificObject(PBook2.retrieve());
+
+                            if(AllEvent.retrieve().getEventContacts().empty()) //if all contact deleted in event, delete event
+                                AllEvent.removeSpecificObject(AllEvent.retrieve());
                         }
                         }
                         PBook2.remove_key(name);
-                        System.out.println("Contact deleted successfully");
+                        System.out.println("Contact and all related events/appointments deleted successfully");
                     }
         else
             System.out.println("Contact doesn't exist!");
