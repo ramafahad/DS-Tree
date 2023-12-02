@@ -17,7 +17,7 @@ public class Phonebook {
 
             System.out.println("\n \n \n Please choose an option from the following ");
             System.out.println(
-                    " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Exit");
+                    " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event/appointment \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Exit");
             num = input.nextInt();
             input.nextLine();
 
