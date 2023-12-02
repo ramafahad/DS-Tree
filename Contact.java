@@ -26,7 +26,6 @@ public class Contact implements Comparable<Contact> {
         address = null;
         birthday = null;
         notes = null;
-        // events = new LinkedList<Event>();
     }
 
     @Override

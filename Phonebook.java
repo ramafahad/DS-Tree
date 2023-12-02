@@ -17,7 +17,7 @@ public class Phonebook {
 
             System.out.println("\n \n \n Please choose an option from the following ");
             System.out.println(
-                    " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Print contacts that share an event\n 9.Exit");
+                    " 1.Add a contact \n 2.Search for a contact \n 3.Delete a contact \n 4.Schedule an event \n 5.Print event details \n 6.Print contacts by first name \n 7.Print all events alphabetically \n 8.Exit");
             num = input.nextInt();
             input.nextLine();
 
@@ -38,7 +38,6 @@ public class Phonebook {
                     Contact newContact = new Contact(name, phone, email, address, bday, note);
 
                     if (!PBook2.chickUnique(newContact)) {
-                        /************************** */
                         if (PBook2.insert(name, newContact)) {
                             System.out.println("Contact added successfully!");
                             PBook.add(newContact);
@@ -49,7 +48,6 @@ public class Phonebook {
                         System.out.println("This contact already exists!");
 
                     break;
-                /************************** */
                 case 2:
                     System.out.println(
                             "Enter search criteria:\n 1.Name\n 2.Phone Number\n 3.Email Address \n 4.Address\n 5.Birthday");
@@ -125,11 +123,6 @@ public class Phonebook {
                     }
                     break;
 
-                /*
-                 * case 8:
-                 * printSharedEvent();
-                 * break;
-                 */
                 case 8:
                     System.out.println("Thank you for using the phonebook, goodbye!");
                     break;
@@ -310,39 +303,7 @@ public class Phonebook {
      * 
      * 
      */
-    /*
-     * public static void scheduleEvent() {
-     * 
-     * // schedule an event for a contact, it checks if the contact exists
-     * // or it has a conflict at the entered time, shows a message accordingly
-     * 
-     * System.out.println("Enter event title: ");
-     * String title = input.nextLine();
-     * System.out.println("Enter contact name:");
-     * String contact = input.nextLine(); // change it to contact name
-     * 
-     * if (search(1, contact).empty())
-     * System.out.print("Contact entered doesn't exist!\n");
-     * else {
-     * Contact contactInvolved = search(1, contact).retrieve();
-     * System.out.println("Enter event date and time (MM/DD/YYYY HH:MM):");
-     * String DateTime = input.nextLine();
-     * System.out.println("Enter event location:");
-     * String location = input.nextLine();
-     * 
-     * if (contactInvolved.checkconflict(DateTime))
-     * System.out.println("The contact has time conflict!\n");
-     * else {
-     * Event e = new Event(title, DateTime, location, contactInvolved);
-     * contactInvolved.setEvents(e);
-     * AllEvent.add(e); // add to big list
-     * System.out.println("Event scheduled successfully!");
-     * }
-     * } // end else
-     * } // end schedule event
-     */
-
-    /******************************************************************** */
+   
     public static void scheduleEvent() {
         /*
          * schedule an event for a contact, it checks if the contact exists
@@ -395,8 +356,6 @@ public class Phonebook {
 
                     if (AllEvent.empty()) {
                         contactObj.setEvents(e);
-                        System.out.println("event is added to the contact");
-                        System.out.println("the list was empty");
                         e.setEventContacts(contactObj);
                         AllEvent.add(e);
                         System.out.println("Event scheduled successfully!");
@@ -412,11 +371,9 @@ public class Phonebook {
 
                                 if (AllEvent.retrieve().compareEvent(e) == true) {
                                     contactObj.setEvents(AllEvent.retrieve());
-                                    System.out.println("event is added to the contact");
                                     AllEvent.retrieve().setEventContacts(contactObj);
                                     contactObj.setEvents(AllEvent.retrieve());
                                     System.out.println("Event scheduled successfully!");
-                                    System.out.println("the contact is added to exist event");
                                     found = true;
                                 } // end if
                                 AllEvent.findNext();
@@ -424,11 +381,9 @@ public class Phonebook {
                             }
                             if (AllEvent.retrieve().compareEvent(e) == true) {
                                 contactObj.setEvents(AllEvent.retrieve());
-                                System.out.println("event is added to the contact");
                                 AllEvent.retrieve().setEventContacts(contactObj);
                                 contactObj.setEvents(AllEvent.retrieve());
                                 System.out.println("Event scheduled successfully!");
-                                System.out.println("the contact is added to exist event");
                                 found = true;
                             } // end if
 
@@ -439,7 +394,6 @@ public class Phonebook {
                             contactObj.setEvents(e);
                             AllEvent.add(e);
                             System.out.println("Event scheduled successfully!");
-                            System.out.println("no  exist event was found");
                         }
 
                     }
@@ -452,72 +406,7 @@ public class Phonebook {
 
     } // end schedule event
 
-    /******************************************************************** */
-
-    /*
-     * public static void printEventDetails() {
-     * 
-     * //print event details based on criteria, either by contact name or event
-     * title
-     * //shows a message if the contact doesnt exist or if it doesnt have any events
-     * // or if there is no events that match the titles entered
-     * 
-     * 
-     * System.out.
-     * println("Enter search criteria number :\n1.Contact name\n2.Event tittle");
-     * int searchEvent = input.nextInt();
-     * input.nextLine();
-     * LinkedList<Contact> returnedContacts = new LinkedList<Contact>();
-     * switch (searchEvent) {
-     * case 1:
-     * System.out.println("Enter contact name:");
-     * String contactName = input.nextLine();
-     * returnedContacts = search(1, contactName);
-     * if (returnedContacts.empty())
-     * System.out.print("Contact entered doesn't exist!\n");
-     * else {
-     * if (!returnedContacts.retrieve().getEvents().empty()) {
-     * System.out.println("Events for " + contactName);
-     * returnedContacts.retrieve().getEvents().printList();
-     * } // end if
-     * else
-     * System.out.println("There are no events for " + contactName);
-     * } // end else
-     * break;
-     * 
-     * case 2:
-     * System.out.println("Enter Event name:");
-     * String EventName = input.nextLine();
-     * if (AllEvent.empty())
-     * System.out.println("There are no events!");
-     * else {
-     * boolean found=false;
-     * AllEvent.findFirst();
-     * while (!AllEvent.last()) {
-     * if (AllEvent.retrieve().gettitle().equalsIgnoreCase(EventName)){
-     * System.out.println(AllEvent.retrieve().toString());
-     * found=true;}
-     * AllEvent.findNext();
-     * } // end while
-     * if (AllEvent.retrieve().gettitle().equalsIgnoreCase(EventName)){// check last
-     * element
-     * System.out.println(AllEvent.retrieve().toString());
-     * found=true;}
-     * if(!found)
-     * System.out.println("There are no events with that title!");
-     * } // end else
-     * break;
-     * 
-     * default:
-     * System.out.println("You have entered a wrong number, please try again");
-     * break;
-     * 
-     * }
-     * }// end method
-     * 
-     * 
-     */
-    /********************************************************* */
+    
     public static void printEventDetails() {
         /*
          * print event details based on criteria, either by contact name or event title
@@ -583,7 +472,6 @@ public class Phonebook {
         }
     }// end method
 
-    /******************************************************************* */
 
     public static void deleteContact(String name){
         if (PBook2.findkey(name)) { //check contact exists
@@ -686,50 +574,7 @@ public class Phonebook {
      * 
      */
 
-    /*
-     * 
-     * //i think we don't need it anymore
-     * public static void printSharedEvent() {
-     * 
-     * //this method prints the names of contacts that share an event the user
-     * // specified
-     * 
-     * System.out.println("Enter event title");
-     * String EventName = input.nextLine();
-     * System.out.println("Enter event date and time (MM/DD/YYYY HH:MM):");
-     * String DateTime = input.nextLine();
-     * System.out.println("Enter event location:");
-     * String location = input.nextLine();
-     * if (AllEvent.empty())
-     * System.out.println("There are no events!");
-     * else {
-     * boolean found = false;
-     * AllEvent.findFirst();
-     * while (!AllEvent.last()) {
-     * if (AllEvent.retrieve().gettitle().equalsIgnoreCase(EventName)
-     * && AllEvent.retrieve().getDateTime().equalsIgnoreCase(DateTime)
-     * && AllEvent.retrieve().getLocation().equalsIgnoreCase(location)) {
-     * found = true;
-     * System.out.println(AllEvent.retrieve().getContactInvolved().getName());
-     * }
-     * AllEvent.findNext();
-     * } // end while
-     * 
-     * if (AllEvent.retrieve().gettitle().equalsIgnoreCase(EventName)
-     * && AllEvent.retrieve().getDateTime().equalsIgnoreCase(DateTime)
-     * && AllEvent.retrieve().getLocation().equalsIgnoreCase(location)) { //check
-     * last element
-     * found = true;
-     * System.out.println(AllEvent.retrieve().getContactInvolved().getName());
-     * }
-     * 
-     * if (!found)
-     * System.out.println("No event found for the entered info!");
-     * else
-     * System.out.println("these are all the involved contacts");
-     * } // end else
-     * }// end method
-     * 
-     */
+    
+    
 
 }// end phone book

@@ -4,12 +4,9 @@ public class Event implements Comparable<Event> {
     private String title;
     private String dateTime;
     private String location;
-    // private Contact contactInvolved;
-    /******************************** */
     private boolean appointment;
     private LinkedList<Contact> EventContacts;
 
-    /******************************** */
 
     public Event(boolean appointment, String title, String dateTime, String location) {
         // constructor with parameters
@@ -30,9 +27,10 @@ public class Event implements Comparable<Event> {
         return title.compareTo(b.title);
     }// end method
 
-    /********************************* */
-    // used to check if the event has alrady exist or not
+
     public boolean compareEvent(Event obj) {
+            // used to check if the event has alrady exist or not
+
         if (this.title.equalsIgnoreCase(obj.title) && this.dateTime.equalsIgnoreCase(obj.dateTime)
                 && this.location.equalsIgnoreCase(obj.location))
             return true;
@@ -41,7 +39,6 @@ public class Event implements Comparable<Event> {
 
     }
 
-    /********************************* */
 
     public void setEventContacts(Contact c) {
 
@@ -53,12 +50,10 @@ public class Event implements Comparable<Event> {
 
     }
 
-    /********************************* */
     public boolean Getappointment() {
         return appointment;
     }
 
-    /******************************************** */
     public String listContactName() {
         String names = "";
         EventContacts.findFirst();
@@ -72,7 +67,6 @@ public class Event implements Comparable<Event> {
 
     }
 
-    /********************************* */
     public String toString() {
         String names = listContactName();
 
@@ -86,7 +80,6 @@ public class Event implements Comparable<Event> {
 
     }// end method
 
-    /******************************************** */
 
     // setter&getter
     public String gettitle() {
@@ -113,15 +106,6 @@ public class Event implements Comparable<Event> {
         this.location = location;
     }
 
-    /*
-     * public Contact getContactInvolved() {
-     * return this.contactInvolved;
-     * }
-     * 
-     * public void setContactInvolved(Contact contactInvolved) {
-     * this.contactInvolved = contactInvolved;
-     * }
-     * 
-     */
+    
 
 }// end class

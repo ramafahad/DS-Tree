@@ -112,26 +112,7 @@ public class LinkedList<T> {
         }
     }/// end method
 
-    /*
-     * public void printList( ) {
-     * /*
-     * this method print all element in the list,
-     * it has no parameter and does not return anything
-     * 
-     * if (this.empty()) { // check if it's not empty
-     * System.out.println("there is nothing to  print ");
-     * return;
-     * }
-     * current = head;
-     * while (current != null) { // loop on all element
-     * System.out.println(current.data); // print element's data
-     * current = current.next;
-     * }
-     * 
-     * }// end method
-     */
-
-    /****************************************************** */
+   
     public String printList() {
         String all = "";
         current = head;
@@ -142,7 +123,7 @@ public class LinkedList<T> {
         return all;
     }// end method
 
-    /**************************************************************** */
+   
 
     // setter&gette
 
