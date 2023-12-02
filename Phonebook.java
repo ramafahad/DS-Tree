@@ -372,7 +372,6 @@ public class Phonebook {
                                 if (AllEvent.retrieve().compareEvent(e) == true) {
                                     contactObj.setEvents(AllEvent.retrieve());
                                     AllEvent.retrieve().setEventContacts(contactObj);
-                                    contactObj.setEvents(AllEvent.retrieve());
                                     System.out.println("Event scheduled successfully!");
                                     found = true;
                                 } // end if
@@ -382,7 +381,6 @@ public class Phonebook {
                             if (AllEvent.retrieve().compareEvent(e) == true) {
                                 contactObj.setEvents(AllEvent.retrieve());
                                 AllEvent.retrieve().setEventContacts(contactObj);
-                                contactObj.setEvents(AllEvent.retrieve());
                                 System.out.println("Event scheduled successfully!");
                                 found = true;
                             } // end if
