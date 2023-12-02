@@ -110,17 +110,7 @@ public class Phonebook {
                     break;
 
                 case 7:
-                    if (AllEvent.empty()) {
-                        System.out.println("there are no events to print");
-                    } else {
-                        AllEvent.findFirst();
-                        while (!AllEvent.last()) {
-                            System.out.print(AllEvent.retrieve().toString()); // print all events alphabetically
-                            AllEvent.findNext();
-                        }
-
-                        System.out.println(AllEvent.retrieve().toString());
-                    }
+                     printEventinOrder();
                     break;
 
                 case 8:
@@ -139,36 +129,6 @@ public class Phonebook {
 
     // methods
 
-    /*
-     * public static boolean checkUnique(Contact c) {
-     * // checks if the contact exists already in the phonebook list. returns true
-     * if
-     * // it is unique and false otherwise
-     * 
-     * if (PBook.empty())
-     * return true;
-     * PBook.findFirst();
-     * while (!PBook.last()) {
-     * if (PBook.retrieve().getName().equalsIgnoreCase(c.getName())
-     * || PBook.retrieve().getPhone().equalsIgnoreCase(c.getPhone())) {
-     * return false;
-     * }
-     * PBook.findNext();
-     * } // end while
-     * 
-     * if (PBook.retrieve().getName().equalsIgnoreCase(c.getName())
-     * || PBook.retrieve().getPhone().equalsIgnoreCase(c.getPhone())) //check last
-     * element
-     * return false;
-     * 
-     * else
-     * return true;
-     * 
-     * }// end of checkUnique method
-     * 
-     */
-
-    /******************************************************************** */
     public static void searchFor(int searchChoice, String choice) {
         switch (searchChoice) {
             case 1:
@@ -205,104 +165,7 @@ public class Phonebook {
         }// end switch
 
     } // end search for
-    /******************************************************************** */
-
-    /*
-     * public static LinkedList<Contact> search(int searchChoice, String choice) {
-     * 
-     * // This method searches for a list of contacts based on the inputs the user
-     * //entered.
-     * // It searches either by full name, phone number ,email, address, birthday,
-     * or
-     * //first name
-     * // and returns a linked list with all the contacts that match the search
-     * 
-     * 
-     * LinkedList<Contact> returnedlist = new LinkedList<Contact>();
-     * if (PBook.empty())
-     * return returnedlist;
-     * 
-     * PBook.findFirst();
-     * while (!PBook.last()) {
-     * switch (searchChoice) {
-     * case 1:
-     * if (PBook.retrieve().getName().equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 2:
-     * if (PBook.retrieve().getPhone().equals(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 3:
-     * if (PBook.retrieve().getEmail().equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 4:
-     * if (PBook.retrieve().getAddress().equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 5:
-     * if (PBook.retrieve().getBirthday().equals(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 6:
-     * if (PBook.retrieve().getName().substring(0,
-     * PBook.retrieve().getName().indexOf(" "))
-     * .equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * }// end switch
-     * PBook.findNext();
-     * } // end while
-     * 
-     * switch (searchChoice) { // check last element
-     * case 1:
-     * if (PBook.retrieve().getName().equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 2:
-     * if (PBook.retrieve().getPhone().equals(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 3:
-     * if (PBook.retrieve().getEmail().equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 4:
-     * if (PBook.retrieve().getAddress().equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 5:
-     * 
-     * if (PBook.retrieve().getBirthday().equals(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * case 6:
-     * if (PBook.retrieve().getName().substring(0,
-     * PBook.retrieve().getName().indexOf(" "))
-     * .equalsIgnoreCase(choice))
-     * returnedlist.insert(PBook.retrieve());
-     * break;
-     * 
-     * }// end switch
-     * 
-     * return returnedlist;
-     * 
-     * }// end searh method
-     * 
-     * 
-     */
+    
    
     public static void scheduleEvent() {
         /*
@@ -515,63 +378,26 @@ public class Phonebook {
             System.out.println("Contact doesn't exist!");
 
         }
-        
-    /*
-     * public static void deleteContact(String name) {
-     * 
-     * //This method takes the name of contact as a string and delete it
-     * // , Also delete all associated events, the method does not return anything
-     * 
-     * 
-     * if (PBook.empty()) { // check if pbook is empty
-     * System.out.println("there is no contacts to be deleted");
-     * return;
-     * }
-     * 
-     * LinkedList<Contact> TempList = search(1, name);// search for the contact that
-     * has the given name
-     * if (!TempList.empty()) { // check if there is a returned contact
-     * PBook.removeSpecificObject(TempList.retrieve()); // delete the contact
-     * System.out.println("Contact is deleted! ");
-     * if (!AllEvent.empty()) { // chech if there exist any event
-     * 
-     * boolean isDeleted = false;
-     * AllEvent.findFirst();
-     * while (!AllEvent.last()) { // loop to delete any associated events
-     * if
-     * (AllEvent.retrieve().getContactInvolved().getName().equalsIgnoreCase(name)) {
-     * AllEvent.remove();
-     * isDeleted = true;
-     * } // end if
-     * else
-     * AllEvent.findNext();
-     * } // end while loop
-     * 
-     * if
-     * (AllEvent.retrieve().getContactInvolved().getName().equalsIgnoreCase(name)) {
-     * // check last element
-     * AllEvent.remove();
-     * isDeleted = true;
-     * }
-     * 
-     * if (isDeleted == true)
-     * System.out.println("and all associated event were deleted!");
-     * else
-     * System.out.println("this contact doesn't have any event to be deleted");
-     * } // end if
-     * 
-     * else
-     * System.out.println("there is no scheduled events to be deleted");
-     * } // outer if
-     * 
-     * else // no contact with name
-     * System.out.println("contact not found");
-     * }// end deleteContact method
-     * 
-     * 
-     */
 
-    
-    
+        public static void printEventinOrder(){
+            //this method will print event alphabetically
+             if (AllEvent.empty()) {
+                        System.out.println("there are no events to print");
+                    } else {
+                        AllEvent.findFirst();
+                        while (!AllEvent.last()) {
+                            System.out.print(AllEvent.retrieve().toString()); // print all events alphabetically
+                            AllEvent.findNext();
+                        }
+                        System.out.println(AllEvent.retrieve().toString());
+                    }
+        }//end method
+
+
+
+
+
+
+
 
 }// end phone book
