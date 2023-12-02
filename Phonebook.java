@@ -430,7 +430,6 @@ public class Phonebook {
                     if (returnedEvent.empty()) {
                         System.out.println("There are no events for " + contactName);
                     } else {
-                        System.out.println("check if list was empty or not " + (returnedEvent.empty()));
                         System.out.println("Events for " + contactName);
                         System.out.println(returnedEvent.printList());
                     }
